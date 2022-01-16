@@ -7,6 +7,7 @@
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.1",
+    "nanoid": "^3.2.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "5.0.0",
@@ -46,8 +47,8 @@
     "prop-types": "^15.8.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md}": "prettier --write"
+    "*.{js,jsx}": "eslint --cache --fix",
+    "*.{js,jsx,css,md,scss}": "prettier --write"
   },
   "resolutions": {
     "styled-components": "^5"
