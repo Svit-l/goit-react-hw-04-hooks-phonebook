@@ -3,5 +3,32 @@
   height: 100vh;
   background-color: rgb(236, 227, 227);
   padding: 30px;
-  text-align: center;
+  text-align: start;
+}
+
+.title {
+  margin-bottom: 15px;
+}
+/*++++++++++++++++++ Form+++++++++ */
+.formWrap {
+  max-width: 400px;
+  background-color: aliceblue;
+  padding: 15px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.inputLable {
+  display: block;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.input {
+  display: block;
+}
+
+.button {
+  display: block;
+  cursor: pointer;
 }

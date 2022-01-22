@@ -1,60 +1,75 @@
 import React, { Component } from 'react';
-import GlobalStyle from '../Common/GlobalStyles';
-import { nanoid } from 'nanoid';
-// import ContactForm from '../ContactForm';
-// import Filter from '../Filter';
-// import ContactList from '../ContactList';
 import s from './App.module.css';
+
+import ContactForm from '../ContactForm';
+
+// import Filter from '../Filter';
+import ContactList from '../ContactList';
 
 class App extends Component {
   state = {
-    contacts: [],
-    name: '',
-    // number: '',
+    contacts: [
+      {
+        id: 2811,
+        name: 'Moore Hensley',
+        number: '5555522',
+      },
+      {
+        id: 3821,
+        name: 'Sharlene Bush',
+        number: '5555523',
+      },
+    ],
   };
 
-  id = nanoid();
-
-  GenerateID = id => {
-    console.log(id);
+  formSubmitHandling = data => {
+    // const { id, name, number } = ref;
+    this.addContacts(data);
+    // console.log(data);
+    // console.log(id, name, number);
   };
 
-  AddContact = () => {
-    this.setState((...prevState) => {
-      console.log(prevState);
-    });
+  addContacts = data => {
+    // this.setState(prevState => {
+    // prevState.contacts.push({
+    //   id: data.id,
+    //   name: this.state.name,
+    //   number: this.state.number,
+    // });
+    console.log(data);
+    // });
   };
 
   render() {
+    let formSubmitData = this.formSubmitHandling();
     return (
       <div className={s.container}>
-        <GlobalStyle />
-
-        <form>
-          <h1>Phonebook</h1>
-          {/* <ContactForm /> */}
-
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
-          <h2>Contacts</h2>
-          <input
-            type="tel"
-            name="number"
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-          {/* <Filter />
-          <ContactList /> */}
-        </form>
+        <h1 className={s.title}>Phonebook</h1>
+        <ContactForm onSubmit={this.formSubmitHandling} />
+        {/* {console.log(formSubmitData)} */}
+        <h2>Contacts</h2>
+        {!formSubmitData ? (
+          <p>You haven't contacts</p>
+        ) : (
+          <ContactList dataObject={formSubmitData} />
+        )}
+        {/* <ul>
+          {this.data ? <li>{formSubmitData}</li> : <p>You haven't contacts</p>}
+        </ul> */}
+        {/* <Filter /> */}
       </div>
     );
   }
 }
 
 export default App;
+
+// +++++++++++++++++++++++++++
+
+// handleInputChange = e => {
+//   console.log(e.currentTarget);
+//   console.log(e.currentTarget.name);
+//   console.log(e.currentTarget.value);
+//   this.setState({ name: e.currentTarget.value.trim() });
+//   this.setState({ [e.currentTarget.name]: e.currentTarget.value.trim() });
+// };
