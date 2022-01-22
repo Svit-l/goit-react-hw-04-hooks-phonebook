@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { nanoid } from 'nanoid';
+
 import s from '../App/App.module.css';
 
 class ContactForm extends Component {
@@ -13,13 +13,9 @@ class ContactForm extends Component {
     number: '',
   };
 
-  ContactId = nanoid();
-
   handleInputChange = e => {
     const { name, value } = e.currentTarget;
-    this.setState({ [name]: value.trim() });
-
-    this.setState({ id: this.ContactId });
+    this.setState({ [name]: value });
   };
 
   handleSubmit = e => {
@@ -37,14 +33,16 @@ class ContactForm extends Component {
   };
 
   render() {
+    const { handleInputChange, handleSubmit } = this;
+    const { number, name } = this.state;
     return (
-      <form className={s.formWrap} onSubmit={this.handleSubmit}>
+      <form className={s.formWrap} onSubmit={handleSubmit}>
         <label className={s.inputLable}>
           Name
           <input
             className={s.input}
-            value={this.state.name}
-            onChange={this.handleInputChange}
+            value={name}
+            onChange={handleInputChange}
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -56,8 +54,8 @@ class ContactForm extends Component {
           Number
           <input
             className={s.input}
-            value={this.state.number}
-            onChange={this.handleInputChange}
+            value={number}
+            onChange={handleInputChange}
             type="tel"
             name="number"
             pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"

@@ -1,62 +1,88 @@
 import React, { Component } from 'react';
+import { nanoid } from 'nanoid';
+
 import s from './App.module.css';
 
 import ContactForm from '../ContactForm';
-
-// import Filter from '../Filter';
+import Filter from '../Filter';
 import ContactList from '../ContactList';
 
 class App extends Component {
   state = {
     contacts: [
-      {
-        id: 2811,
-        name: 'Moore Hensley',
-        number: '5555522',
-      },
-      {
-        id: 3821,
-        name: 'Sharlene Bush',
-        number: '5555523',
-      },
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+      { id: '2811', name: 'Moore Hensley', number: '555-55-22' },
+      { id: '3821', name: 'Sharlene Bush', number: '555-55-23' },
+      { id: '4421', name: 'Nansy Button', number: '455-55-67' },
     ],
+    filter: '',
   };
 
-  formSubmitHandling = data => {
-    // const { id, name, number } = ref;
-    this.addContacts(data);
-    // console.log(data);
-    // console.log(id, name, number);
+  addContacts = ({ name, number }) => {
+    const { contacts } = this.state;
+    const contact = {
+      name,
+      number,
+      id: nanoid(),
+    };
+
+    contacts.some(contact => contact.name === name)
+      ? alert(`${name} is already in contacts`)
+      : this.setState(prevState => ({
+          contacts: [...prevState.contacts, contact],
+        }));
   };
 
-  addContacts = data => {
-    // this.setState(prevState => {
-    // prevState.contacts.push({
-    //   id: data.id,
-    //   name: this.state.name,
-    //   number: this.state.number,
-    // });
-    console.log(data);
-    // });
+  deleteContact = contactId => {
+    const { contacts } = this.state;
+    const result = window.confirm('Are you sure? Contact cannot be restored!');
+    result
+      ? this.setState({
+          contacts: contacts.filter(contact => contact.id !== contactId),
+        })
+      : alert('The contact has not been deleted!');
+  };
+
+  changeFilter = e => {
+    const { value } = e.currentTarget;
+    this.setState({ filter: value });
+  };
+
+  getFilteredContacts = () => {
+    const { filter, contacts } = this.state;
+    const normalizedFilter = filter.toLowerCase();
+
+    return contacts.filter(contact =>
+      contact.name.toLowerCase().includes(normalizedFilter)
+    );
   };
 
   render() {
-    let formSubmitData = this.formSubmitHandling();
+    const { addContacts, changeFilter, deleteContact } = this;
+    const { contacts, filter } = this.state;
+    const filteredContacts = this.getFilteredContacts();
+
     return (
       <div className={s.container}>
         <h1 className={s.title}>Phonebook</h1>
-        <ContactForm onSubmit={this.formSubmitHandling} />
-        {/* {console.log(formSubmitData)} */}
-        <h2>Contacts</h2>
-        {!formSubmitData ? (
-          <p>You haven't contacts</p>
-        ) : (
-          <ContactList dataObject={formSubmitData} />
-        )}
-        {/* <ul>
-          {this.data ? <li>{formSubmitData}</li> : <p>You haven't contacts</p>}
-        </ul> */}
-        {/* <Filter /> */}
+        <ContactForm onSubmit={addContacts} />
+        <div className={s.contactList}>
+          {contacts.length === 0 ? (
+            <p>Your phone book is empty, enter your first contact!</p>
+          ) : (
+            <>
+              <h2 className={s.subtitle}>Contacts</h2>
+              <Filter value={filter} event={changeFilter} />
+              <ContactList
+                contacts={filteredContacts}
+                onDeleteContact={deleteContact}
+              />
+            </>
+          )}
+        </div>
       </div>
     );
   }
