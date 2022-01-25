@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from '../App/App.module.css';
+import s from './Button.module.css';
 
 function Button({ label, onClick = () => null, type = 'button' }) {
   return (

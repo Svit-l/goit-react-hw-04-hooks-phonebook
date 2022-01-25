@@ -1,0 +1,13 @@
+.oneContactWrap {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+}
+
+.oneContactWrap:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.oneContact {
+  margin-right: 10px;
+}

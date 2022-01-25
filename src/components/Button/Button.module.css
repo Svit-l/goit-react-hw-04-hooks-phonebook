@@ -1,0 +1,5 @@
+.contactBtn {
+  composes: button from '../ContactForm/ContactForm.module.css';
+  font-size: 60%;
+  padding: 2px;
+}

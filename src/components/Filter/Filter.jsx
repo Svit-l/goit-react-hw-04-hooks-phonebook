@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import s from '../App/App.module.css';
+import s from '../ContactForm/ContactForm.module.css';
 
 function Filter({ value, event }) {
   return (

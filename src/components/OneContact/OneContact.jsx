@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import s from '../App/App.module.css';
+import s from './OneContact.module.css';
 import Button from '../Button';
 
 const OneContact = ({ id, name, number, onDeleteContact }) => {

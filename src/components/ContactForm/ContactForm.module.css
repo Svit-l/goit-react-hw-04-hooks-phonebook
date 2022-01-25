@@ -1,0 +1,42 @@
+.formWrap {
+  max-width: 400px;
+  background-color: aliceblue;
+  padding: 15px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+}
+
+.inputLable {
+  display: block;
+  font-weight: 600;
+  padding-bottom: 20px;
+}
+
+.input {
+  display: block;
+}
+
+.input:hover,
+.input:focus {
+  border-color: rgb(73, 158, 228);
+  outline: none;
+}
+
+.button {
+  display: block;
+  cursor: pointer;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 3px;
+  background-color: #fff;
+  color: black;
+}
+
+.button:hover,
+.contactBtn:hover,
+.button:focus,
+.contactBtn:focus {
+  background-color: rgb(105, 97, 97);
+  color: #fff;
+  outline: none;
+}
