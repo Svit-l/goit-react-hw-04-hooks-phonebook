@@ -2,6 +2,11 @@
   --main-color: #212121;
   --another-main-color: #ffffff;
   --main-font: 'Roboto', sans-serif;
+  --toastify-color-success: #07bc0c;
+  --toastify-color-warning: #f1c40f;
+  --toastify-color-error: #e74c3c;
+  --toastify-text-color-warning: rgb(27, 27, 27);
+  --toastify-toast-width: 280px;
 }
 
 h1,
@@ -38,4 +43,12 @@ body {
 a {
   text-decoration: none;
   /* outline: none; */
+}
+
+.Toastify__close-button {
+  color: rgb(65, 61, 61);
+}
+
+.Toastify__toast-icon {
+  color: rgb(105, 97, 97);
 }

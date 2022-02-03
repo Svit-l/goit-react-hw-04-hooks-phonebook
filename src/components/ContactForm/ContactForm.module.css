@@ -1,8 +1,8 @@
 .formWrap {
   max-width: 400px;
-  background-color: aliceblue;
+  background-color: rgb(238, 234, 234);
   padding: 15px;
-  border: 1px solid black;
+  border: 1px solid rgb(105, 97, 97);
   margin-bottom: 30px;
 }
 
@@ -26,7 +26,7 @@
   display: block;
   cursor: pointer;
   padding: 5px;
-  border: 1px solid black;
+  border: 1px solid rgb(105, 97, 97);
   border-radius: 3px;
   background-color: #fff;
   color: black;
