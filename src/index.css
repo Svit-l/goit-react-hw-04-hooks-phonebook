@@ -3,8 +3,8 @@
   --another-main-color: #ffffff;
   --main-font: 'Roboto', sans-serif;
   --toastify-color-success: #07bc0c;
-  --toastify-color-warning: #f1c40f;
-  --toastify-color-error: #e74c3c;
+  --toastify-color-warning: hsl(39, 83%, 55%);
+  --toastify-color-error: #e62712;
   --toastify-text-color-warning: rgb(27, 27, 27);
   --toastify-toast-width: 280px;
 }
